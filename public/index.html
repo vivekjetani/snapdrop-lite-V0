@@ -123,14 +123,11 @@
                 <label for="offer-sdp" class="font-body2">1. Generate & Share Code</label>
                 <textarea id="offer-sdp" class="textarea-code" readonly placeholder="Click 'Create Code' to start..." rows="3"></textarea>
                 <button id="create-offer-btn" class="connection-button" style="width: 100%; margin-top: 0.5rem;">Create Code</button>
-                <div id="qrcode" style="margin-top: 1rem; background: white; padding: 1rem; border-radius: 1rem; display: none;"></div>
             </div>
             
             <div>
-                <label for="answer-sdp" class="font-body2">2. Paste Code from Peer or Scan QR</label>
+                <label for="answer-sdp" class="font-body2">2. Paste Code from Peer</label>
                 <textarea id="answer-sdp" class="textarea-code" placeholder="Paste code from the other device here..." rows="3"></textarea>
-                <button id="scan-qr-btn" class="connection-button" style="width: 100%; margin-top: 0.5rem;">Scan QR</button>
-                <video id="qr-video" style="width: 100%; max-width: 500px; margin-top: 1rem; border-radius: 1rem; display: none;"></video>
                 <button id="connect-btn" class="connection-button" style="width: 100%; margin-top: 0.5rem; background-color: #48bb78;">Connect</button>
             </div>
         </div>
@@ -209,12 +206,21 @@
 
     <!-- Sounds -->
     <audio id="blop" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU2LjQwLjEwMQAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAAZAAAATGF2YzU2LjQxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/7QMRAAAAISEC9AFQkAAAAAYi1EUHVtM0k2VHprcEY2YUVSMlhBNkFtb3d4ZzFWbVB5ZlFBQUNqb3F4MFYwQ3VaUDZBY2k4d203eEtlYVhtYkFBQUE4dGR3b3djd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3" ></audio>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
     <script>
         // --- Service Worker for Offline Capability ---
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/public/sw.js')
+            const swScript = `
+                const CACHE_NAME = 'offline-peerdrop-v1';
+                const urlsToCache = ['/'];
+                self.addEventListener('install', event => {
+                    event.waitUntil(caches.open(CACHE_NAME).then(cache => cache.addAll(urlsToCache)));
+                });
+                self.addEventListener('fetch', event => {
+                    event.respondWith(caches.match(event.request).then(response => response || fetch(event.request)));
+                });
+            `;
+            const swBlob = new Blob([swScript], { type: 'application/javascript' });
+            navigator.serviceWorker.register(URL.createObjectURL(swBlob))
                 .then(() => console.log('Service worker registered.'))
                 .catch(err => console.error('Service worker registration failed:', err));
         }
@@ -230,29 +236,19 @@
             const CHUNK_SIZE = 64 * 1024;
 
             const stunServers = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
-
-            // --- Random Name Generation ---
-            function generateRandomName() {
-                const adjectives = ["Aqua", "Blue", "Lime", "Navy", "Teal", "Olive", "Green", "Red", "Orange", "Purple", "Fuchsia", "Maroon", "Gray"];
-                const nouns = ["Ape", "Bat", "Bear", "Cat", "Dog", "Eel", "Fox", "Goat", "Hen", "Jay", "Kiwi", "Lion", "Mule", "Newt", "Owl", "Pig", "Rat", "Shark", "Tuna", "Vole", "Wolf", "Yak", "Zebra"];
-                return `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`;
-            }
-            const myName = generateRandomName();
-            $('displayName').querySelector('strong').textContent = myName;
             
             function createPeerConnection() {
                 peerConnection = new RTCPeerConnection(stunServers);
-
                 peerConnection.onicecandidate = event => {
-                    // When the event.candidate is null, it means ICE gathering is complete.
-                    if (!event.candidate) {
-                        const sdp = JSON.stringify(peerConnection.localDescription);
-                        if (peerConnection.localDescription.type === 'offer') {
-                            $('offer-sdp').value = sdp;
-                            generateQRCode(sdp);
-                        } else {
-                            $('answer-sdp').value = sdp;
-                        }
+                    if (event.candidate) {
+                        setTimeout(() => { // Debounce to gather candidates
+                            const sdp = JSON.stringify(peerConnection.localDescription);
+                            if (peerConnection.localDescription.type === 'offer') {
+                                $('offer-sdp').value = sdp;
+                            } else {
+                                $('answer-sdp').value = sdp;
+                            }
+                        }, 1000);
                     }
                 };
 
@@ -267,13 +263,10 @@
                     console.log('Data channel is open!');
                     Events.fire('notify-user', 'Connection established!');
                     $('connection-setup').classList.add('hidden');
-                    
-                    dataChannel.send(JSON.stringify({ type: 'name', name: myName }));
-
                     // We only show one peer, so let's create a dummy peer object for the UI
                     Events.fire('peer-joined', {
                         id: 'peer-1',
-                        name: { displayName: 'Connecting...', deviceName: 'Remote Device' }
+                        name: { displayName: 'Connected Peer', deviceName: 'Remote Device' }
                     });
                 };
                 dataChannel.onclose = () => {
@@ -286,14 +279,11 @@
             
             // --- Initiator (Offer) Logic ---
             $('create-offer-btn').addEventListener('click', async () => {
-                console.log('Create offer button clicked.');
                 createPeerConnection();
                 dataChannel = peerConnection.createDataChannel('file-sharing');
                 setupDataChannelEvents();
                 const offer = await peerConnection.createOffer();
-                console.log('Offer created:', offer);
                 await peerConnection.setLocalDescription(offer);
-                console.log('Local description set.');
                 $('create-offer-btn').textContent = 'Code Generated. Share it!';
             });
             
@@ -308,7 +298,7 @@
                 try {
                     const parsedCode = JSON.parse(code);
                     if (parsedCode.type === 'offer') { // This peer is creating an answer
-                        if (!peerConnection) createPeerConnection();
+                        createPeerConnection();
                         await peerConnection.setRemoteDescription(new RTCSessionDescription(parsedCode));
                         const answer = await peerConnection.createAnswer();
                         await peerConnection.setLocalDescription(answer);
@@ -321,67 +311,6 @@
                     console.error(e);
                 }
             });
-
-            // --- QR Code Logic ---
-            function generateQRCode(text) {
-                const qrCodeContainer = $('qrcode');
-                qrCodeContainer.innerHTML = '';
-                new QRCode(qrCodeContainer, {
-                    text: text,
-                    width: 256,
-                    height: 256,
-                    colorDark : "#000000",
-                    colorLight : "#ffffff",
-                    correctLevel : 3 // H for High
-                });
-                qrCodeContainer.style.display = 'block';
-            }
-
-            $('scan-qr-btn').addEventListener('click', () => {
-                const video = $('qr-video');
-                const canvasElement = document.createElement('canvas');
-                const canvas = canvasElement.getContext('2d');
-                let stream;
-
-                video.style.display = 'block';
-
-                navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
-                    .then(videoStream => {
-                        stream = videoStream;
-                        video.srcObject = stream;
-                        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
-                        video.play();
-                        requestAnimationFrame(tick);
-                    })
-                    .catch(err => {
-                        console.error("Error accessing camera: ", err);
-                        alert("Could not access camera. Please ensure you have a camera and have granted permission.");
-                        video.style.display = 'none';
-                    });
-
-                function tick() {
-                    if (video.readyState === video.HAVE_ENOUGH_DATA) {
-                        canvasElement.height = video.videoHeight;
-                        canvasElement.width = video.videoWidth;
-                        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
-                        const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
-                        const code = jsQR(imageData.data, imageData.width, imageData.height, {
-                            inversionAttempts: "dontInvert",
-                        });
-
-                        if (code) {
-                            stream.getTracks().forEach(track => track.stop());
-                            video.style.display = 'none';
-                            $('answer-sdp').value = code.data;
-                            // Automatically trigger connect
-                            $('connect-btn').click();
-                            return;
-                        }
-                    }
-                    requestAnimationFrame(tick);
-                }
-            });
-
 
             // --- Generic UI and File Handling (Adapted from ui.js, network.js) ---
             window.Events = {
@@ -556,12 +485,7 @@
             function handleDataChannelMessage(event) {
                 if (typeof event.data === 'string') {
                     const message = JSON.parse(event.data);
-                    if (message.type === 'name') {
-                        const peerUI = $('peer-1').ui;
-                        if (peerUI) {
-                            peerUI.$el.querySelector('.name').textContent = message.name;
-                        }
-                    } else if (message.type === 'header') {
+                    if (message.type === 'header') {
                         receivingFile = { name: message.name, mime: message.mime, size: message.size, chunks: [], receivedSize: 0 };
                         Events.fire('file-progress', { sender: 'peer-1', progress: 0 });
                     } else if (message.type === 'text') {
@@ -584,3 +508,4 @@
     </script>
 </body>
 </html>
+
