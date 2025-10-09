@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>Offline PeerDrop - Serverless File Sharing</title>
+    <meta name="description" content="Serverless, offline-capable, peer-to-peer file sharing in your browser. Inspired by Snapdrop and Airdrop.">
+    <link rel="icon" sizes="96x96" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAQAAABId+f1AAAB+klEQVR42u2aO3LDMAwE4c4XgEKs2dI3sERt/z/BwTCSw+DEJo7kQ2wUklxlmZ3Hl5OSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmSJEmS5J/Mjdscdxo7A7R27G9wsmk/91/92Jbn+c49n2B8T6eZ2wL/Dvw7+GeA3wN+D/w78H8A/w78O/Dv4N+Bfwf+Hfj3wP8D/w/8P/D/gP8H/j/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A/8P/D/w/8D/A-End-Omitted-Binary-Content->");>
+    <style>
+        /* Constants */
+        :root {
+            --icon-size: 24px;
+            --primary-color: #4285f4;
+            --peer-width: 120px;
+            --text-color: #333;
+            --bg-color: #fafafa;
+            --bg-color-secondary: #f1f3f4;
+        }
+
+        /* Layout */
+        html { height: 100%; }
+        html, body { margin: 0; display: flex; flex-direction: column; width: 100%; overflow-x: hidden; }
+        body { flex-grow: 1; align-items: center; justify-content: center; overflow-y: hidden; }
+        .row-reverse { display: flex; flex-direction: row-reverse; }
+        .row { display: flex; flex-direction: row; }
+        .column { display: flex; flex-direction: column; }
+        .center { display: flex; align-items: center; justify-content: center; }
+        .grow { flex-grow: 1; }
+        .full { position: absolute; top: 0; left: 0; right: 0; bottom: 0; }
+        header { position: absolute; top: 0; left: 0; right: 0; height: 56px; align-items: center; padding: 16px; box-sizing: border-box; }
+        [hidden] { display: none !important; }
+
+        /* Typography */
+        body { font-family: -apple-system, BlinkMacSystemFont, Roboto, "Segoe UI", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+        h1 { font-size: 34px; font-weight: 400; letter-spacing: -.01em; line-height: 40px; margin: 8px 0 0; }
+        h2 { font-size: 24px; font-weight: 400; letter-spacing: -.012em; line-height: 32px; }
+        h3 { font-size: 20px; font-weight: 500; margin: 16px 0; }
+        .font-subheading { font-size: 16px; font-weight: 400; line-height: 24px; word-break: break-all; }
+        .font-body1, body { font-size: 14px; font-weight: 400; line-height: 20px; }
+        .font-body2 { font-size: 12px; line-height: 18px; }
+        a { text-decoration: none; color: currentColor; cursor: pointer; }
+
+        /* Icons */
+        .icon { width: var(--icon-size); height: var(--icon-size); fill: currentColor; }
+
+        /* Shadows */
+        [shadow="1"] { box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.14), 0 1px 8px 0 rgba(0, 0, 0, 0.12), 0 3px 3px -2px rgba(0, 0, 0, 0.4); }
+        [shadow="2"] { box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14), 0 1px 10px 0 rgba(0, 0, 0, 0.12), 0 2px 4px -1px rgba(0, 0, 0, 0.4); }
+
+        /* Main UI */
+        body { color: var(--text-color); background-color: var(--bg-color); }
+        x-peers { width: 100%; overflow: hidden; flex-flow: row wrap; z-index: 2; }
+        x-no-peers { padding: 8px; text-align: center; animation: fade-in 300ms 500ms backwards; }
+        x-no-peers h2 { color: var(--primary-color); }
+        x-peers:not(:empty)+x-no-peers { display: none; }
+        x-peer { -webkit-user-select: none; user-select: none; }
+        x-peer label { width: var(--peer-width); padding: 8px; cursor: pointer; touch-action: manipulation; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); position: relative; }
+        x-peer .name { width: var(--peer-width); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-align: center; }
+        input[type="file"] { visibility: hidden; position: absolute; }
+        x-peer x-icon { --icon-size: 40px; width: var(--icon-size); padding: 12px; border-radius: 50%; background: var(--primary-color); color: white; display: flex; margin-bottom: 8px; transition: transform 150ms; will-change: transform; }
+        x-peer:not([transfer]):hover x-icon { transform: scale(1.05); }
+        .status, .device-name { height: 18px; opacity: 0.7; }
+        x-peer[transfer] .status:before { content: 'Transferring...'; }
+        x-peer:not([transfer]) .status, x-peer[transfer] .device-name { display: none; }
+        x-peer x-icon { animation: pop 600ms ease-out 1; }
+        @keyframes pop { 0% { transform: scale(0.7); } 40% { transform: scale(1.2); } }
+        x-peer[drop] x-icon { transform: scale(1.1); }
+        footer { position: absolute; bottom: 0; left: 0; right: 0; align-items: center; padding: 0 0 16px 0; text-align: center; }
+        footer .logo { --icon-size: 80px; margin-bottom: 8px; color: var(--primary-color); }
+        footer .font-body2 { color: var(--primary-color); }
+
+        /* Dialogs */
+        x-dialog x-background { background: rgba(0, 0, 0, 0.61); z-index: 10; transition: opacity 300ms; will-change: opacity; padding: 16px; }
+        x-dialog x-paper { z-index: 3; background: white; border-radius: 8px; padding: 16px 24px; width: 100%; max-width: 400px; box-sizing: border-box; transition: transform 300ms; will-change: transform; }
+        x-dialog:not([show]) { pointer-events: none; }
+        x-dialog:not([show]) x-paper { transform: scale(0.1); }
+        x-dialog:not([show]) x-background { opacity: 0; }
+        .button { padding: 0 16px; box-sizing: border-box; min-height: 36px; min-width: 100px; font-size: 14px; line-height: 24px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; background: inherit; color: var(--primary-color); border: none; outline: none; }
+        .textarea { box-sizing: border-box; border: none; outline: none; padding: 16px 24px; border-radius: 16px; margin: 8px 0; font-size: 14px; background: #f1f3f4; display: block; overflow: auto; resize: none; min-height: 40px; line-height: 16px; max-height: 300px; }
+        #receiveDialog .preview { display: none; }
+        #receiveDialog[has-preview] .preview { display: block; }
+        #img-preview { max-width: 100%; max-height: 50vh; margin: auto; display: block; }
+        #receiveTextDialog #text { width: 100%; word-break: break-all; max-height: 300px; overflow-y: auto; user-select: all; white-space: pre-wrap; }
+        
+        /* Connection UI */
+        #connection-setup {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            background: #2d3748;
+            padding: 2rem;
+            border-radius: 1rem;
+            width: 90%;
+            max-width: 500px;
+            color: #e2e8f0;
+            border: 1px solid #4a5568;
+        }
+        #connection-setup.hidden { display: none; }
+        .textarea-code { width: 100%; background: #1a202c; border: 1px solid #4a5568; border-radius: 0.5rem; padding: 0.5rem; color: #a0aec0; resize: none; font-family: monospace; }
+        .connection-button { background-color: #4299e1; color: white; font-weight: bold; padding: 0.5rem 1rem; border-radius: 0.5rem; border: none; cursor: pointer; transition: background-color 0.2s; }
+        .connection-button:hover { background-color: #3182ce; }
+        
+        .progress { width: 80px; height: 80px; position: absolute; top: 0px; clip: rect(0px, 80px, 80px, 40px); --progress: rotate(0deg); transition: transform 200ms; }
+        .circle { width: 72px; height: 72px; border: 4px solid var(--primary-color); border-radius: 40px; position: absolute; clip: rect(0px, 40px, 80px, 0px); will-change: transform; transform: var(--progress); }
+        .over50 { clip: rect(auto, auto, auto, auto); }
+        .over50 .circle.right { transform: rotate(180deg); }
+
+        x-toast { position: absolute; min-height: 48px; bottom: 24px; width: 100%; max-width: 344px; background-color: #323232; color: rgba(255, 255, 255, 0.95); align-items: center; box-sizing: border-box; padding: 8px 24px; z-index: 20; transition: opacity 200ms, transform 300ms ease-out; line-height: 24px; border-radius: 8px; }
+        x-toast:not([show]) { opacity: 0; transform: translateY(100px); }
+    </style>
+</head>
+<body translate="no">
+
+    <!-- Connection Setup UI -->
+    <div id="connection-setup" class="column center">
+        <h2 style="text-align: center; color: #63b3ed;">Connect to a Peer</h2>
+        <p style="text-align: center; font-size: 0.9rem; margin-bottom: 1.5rem;">To share files, exchange connection codes between two devices.</p>
+        
+        <div class="column" style="width: 100%; gap: 1rem;">
+            <div>
+                <label for="offer-sdp" class="font-body2">1. Generate & Share Code</label>
+                <textarea id="offer-sdp" class="textarea-code" readonly placeholder="Click 'Create Code' to start..." rows="3"></textarea>
+                <button id="create-offer-btn" class="connection-button" style="width: 100%; margin-top: 0.5rem;">Create Code</button>
+                <div id="qrcode" style="margin-top: 1rem; background: white; padding: 1rem; border-radius: 1rem; display: none;"></div>
+            </div>
+            
+            <div>
+                <label for="answer-sdp" class="font-body2">2. Paste Code from Peer or Scan QR</label>
+                <textarea id="answer-sdp" class="textarea-code" placeholder="Paste code from the other device here..." rows="3"></textarea>
+                <button id="scan-qr-btn" class="connection-button" style="width: 100%; margin-top: 0.5rem;">Scan QR</button>
+                <video id="qr-video" style="width: 100%; max-width: 500px; margin-top: 1rem; border-radius: 1rem; display: none;"></video>
+                <button id="connect-btn" class="connection-button" style="width: 100%; margin-top: 0.5rem; background-color: #48bb78;">Connect</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Main UI -->
+    <x-peers class="center"></x-peers>
+    <x-no-peers>
+        <h2>Connect to a peer to start sharing files</h2>
+    </x-no-peers>
+
+    <!-- Footer -->
+    <footer class="column">
+        <svg class="icon logo"><use xlink:href="#wifi-tethering" /></svg>
+        <div id="displayName">You are known as <strong>Your Name</strong></div>
+        <div class="font-body2">Connect to another device to begin sharing</div>
+    </footer>
+
+    <!-- Dialogs -->
+    <x-dialog id="receiveDialog">
+        <x-background class="full center">
+            <x-paper shadow="2">
+                <h3>File Received</h3>
+                <div class="font-subheading" id="fileName"></div>
+                <div class="font-body2" id="fileSize"></div>
+                <div class='preview'>
+                    <img id='img-preview' src="">
+                </div>
+                <div class="row-reverse">
+                    <a class="button" close id="download" title="Download File" autofocus>Save</a>
+                    <button class="button" close>Ignore</button>
+                </div>
+            </x-paper>
+        </x-background>
+    </x-dialog>
+
+    <x-dialog id="sendTextDialog">
+        <form action="#">
+            <x-background class="full center">
+                <x-paper shadow="2">
+                    <h3>Send a Message</h3>
+                    <div id="textInput" class="textarea" role="textbox" placeholder="Send a message..." contenteditable></div>
+                    <div class="row-reverse">
+                        <button class="button" type="submit" close>Send</button>
+                        <a class="button" close>Cancel</a>
+                    </div>
+                </x-paper>
+            </x-background>
+        </form>
+    </x-dialog>
+    
+    <x-dialog id="receiveTextDialog">
+        <x-background class="full center">
+            <x-paper shadow="2">
+                <h3>Message Received</h3>
+                <div class="font-subheading" id="text"></div>
+                <div class="row-reverse">
+                    <button class="button" id="copy" close autofocus>Copy</button>
+                    <button class="button" close>Close</button>
+                </div>
+            </x-paper>
+        </x-background>
+    </x-dialog>
+    
+    <div class="toast-container full center">
+        <x-toast class="row" shadow="1" id="toast"></x-toast>
+    </div>
+
+    <!-- SVG Icons -->
+    <svg style="display: none;">
+        <symbol id=wifi-tethering viewBox="0 0 24 24"><path d="M12 11c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm6 2c0-3.31-2.69-6-6-6s-6 2.69-6 6c0 2.22 1.21 4.15 3 5.19l1-1.74c-1.19-.7-2-1.97-2-3.45 0-2.21 1.79-4 4-4s4 1.79 4 4c0 1.48-.81 2.75-2 3.45l1 1.74c1.79-1.04 3-2.97 3-5.19zM12 3C6.48 3 2 7.48 2 13c0 3.7 2.01 6.92 4.99 8.65l1-1.73C5.61 18.53 4 15.96 4 13c0-4.42 3.58-8 8-8s8 3.58 8 8c0 2.96-1.61 5.53-4 6.92l1 1.73c2.99-1.73 5-4.95 5-8.65 0-5.52-4.48-10-10-10z"></path></symbol>
+        <symbol id=desktop-mac viewBox="0 0 24 24"><path d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z"></path></symbol>
+        <symbol id=phone-iphone viewBox="0 0 24 24"><path d="M15.5 1h-8C6.12 1 5 2.12 5 3.5v17C5 21.88 6.12 23 7.5 23h8c1.38 0 2.5-1.12 2.5-2.5v-17C18 2.12 16.88 1 15.5 1zm-4 21c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4.5-4H7V4h9v14z"></path></symbol>
+        <symbol id=tablet-mac viewBox="0 0 24 24"><path d="M18.5 0h-14C3.12 0 2 1.12 2 2.5v19C2 22.88 3.12 24 4.5 24h14c1.38 0 2.5-1.12 2.5-2.5v-19C21 1.12 19.88 0 18.5 0zm-7 23c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm7.5-4H4V3h15v16z"></path></symbol>
+    </svg>
+
+    <!-- Sounds -->
+    <audio id="blop" src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU2LjQwLjEwMQAAAAAAAAAAAAAA//tAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAAZAAAATGF2YzU2LjQxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAP/7QMRAAAAISEC9AFQkAAAAAYi1EUHVtM0k2VHprcEY2YUVSMlhBNkFtb3d4ZzFWbVB5ZlFBQUNqb3F4MFYwQ3VaUDZBY2k4d203eEtlYVhtYkFBQUE4dGR3b3djd3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3d3" ></audio>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.5.1/qrcode.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script>
+        // --- Service Worker for Offline Capability ---
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/public/sw.js')
+                .then(() => console.log('Service worker registered.'))
+                .catch(err => console.error('Service worker registration failed:', err));
+        }
+
+        // --- Core Application Logic ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const $ = id => document.getElementById(id);
+
+            // --- Peer Connection & Data Transfer Logic ---
+            let peerConnection;
+            let dataChannel;
+            let receivingFile = {};
+            const CHUNK_SIZE = 64 * 1024;
+
+            const stunServers = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+
+            // --- Random Name Generation ---
+            function generateRandomName() {
+                const adjectives = ["Aqua", "Blue", "Lime", "Navy", "Teal", "Olive", "Green", "Red", "Orange", "Purple", "Fuchsia", "Maroon", "Gray"];
+                const nouns = ["Ape", "Bat", "Bear", "Cat", "Dog", "Eel", "Fox", "Goat", "Hen", "Jay", "Kiwi", "Lion", "Mule", "Newt", "Owl", "Pig", "Rat", "Shark", "Tuna", "Vole", "Wolf", "Yak", "Zebra"];
+                return `${adjectives[Math.floor(Math.random() * adjectives.length)]} ${nouns[Math.floor(Math.random() * nouns.length)]}`;
+            }
+            const myName = generateRandomName();
+            $('displayName').querySelector('strong').textContent = myName;
+            
+            function createPeerConnection() {
+                peerConnection = new RTCPeerConnection(stunServers);
+
+                peerConnection.onicecandidate = event => {
+                    // When the event.candidate is null, it means ICE gathering is complete.
+                    if (!event.candidate) {
+                        const sdp = JSON.stringify(peerConnection.localDescription);
+                        if (peerConnection.localDescription.type === 'offer') {
+                            $('offer-sdp').value = sdp;
+                            generateQRCode(sdp);
+                        } else {
+                            $('answer-sdp').value = sdp;
+                        }
+                    }
+                };
+
+                peerConnection.ondatachannel = event => {
+                    dataChannel = event.channel;
+                    setupDataChannelEvents();
+                };
+            }
+            
+            function setupDataChannelEvents() {
+                dataChannel.onopen = () => {
+                    console.log('Data channel is open!');
+                    Events.fire('notify-user', 'Connection established!');
+                    $('connection-setup').classList.add('hidden');
+                    
+                    dataChannel.send(JSON.stringify({ type: 'name', name: myName }));
+
+                    // We only show one peer, so let's create a dummy peer object for the UI
+                    Events.fire('peer-joined', {
+                        id: 'peer-1',
+                        name: { displayName: 'Connecting...', deviceName: 'Remote Device' }
+                    });
+                };
+                dataChannel.onclose = () => {
+                    Events.fire('notify-user', 'Connection closed.');
+                    Events.fire('peer-left', 'peer-1');
+                    $('connection-setup').classList.remove('hidden');
+                };
+                dataChannel.onmessage = handleDataChannelMessage;
+            }
+            
+            // --- Initiator (Offer) Logic ---
+            $('create-offer-btn').addEventListener('click', async () => {
+                console.log('Create offer button clicked.');
+                createPeerConnection();
+                dataChannel = peerConnection.createDataChannel('file-sharing');
+                setupDataChannelEvents();
+                const offer = await peerConnection.createOffer();
+                console.log('Offer created:', offer);
+                await peerConnection.setLocalDescription(offer);
+                console.log('Local description set.');
+                $('create-offer-btn').textContent = 'Code Generated. Share it!';
+            });
+            
+            // --- Receiver (Answer) & Connection Logic ---
+            $('connect-btn').addEventListener('click', async () => {
+                const code = $('answer-sdp').value.trim();
+                if (!code) {
+                    alert('Please paste a code from your peer.');
+                    return;
+                }
+                
+                try {
+                    const parsedCode = JSON.parse(code);
+                    if (parsedCode.type === 'offer') { // This peer is creating an answer
+                        if (!peerConnection) createPeerConnection();
+                        await peerConnection.setRemoteDescription(new RTCSessionDescription(parsedCode));
+                        const answer = await peerConnection.createAnswer();
+                        await peerConnection.setLocalDescription(answer);
+                        $('connect-btn').textContent = 'Answer Generated! Send it back.';
+                    } else if (parsedCode.type === 'answer') { // This peer is the initiator, receiving the answer
+                        await peerConnection.setRemoteDescription(new RTCSessionDescription(parsedCode));
+                    }
+                } catch (e) {
+                    alert('Invalid connection code!');
+                    console.error(e);
+                }
+            });
+
+            // --- QR Code Logic ---
+            function generateQRCode(text) {
+                const qrCodeContainer = $('qrcode');
+                qrCodeContainer.innerHTML = '';
+                new QRCode(qrCodeContainer, {
+                    text: text,
+                    width: 256,
+                    height: 256,
+                    colorDark : "#000000",
+                    colorLight : "#ffffff",
+                    correctLevel : 3 // H for High
+                });
+                qrCodeContainer.style.display = 'block';
+            }
+
+            $('scan-qr-btn').addEventListener('click', () => {
+                const video = $('qr-video');
+                const canvasElement = document.createElement('canvas');
+                const canvas = canvasElement.getContext('2d');
+                let stream;
+
+                video.style.display = 'block';
+
+                navigator.mediaDevices.getUserMedia({ video: { facingMode: "environment" } })
+                    .then(videoStream => {
+                        stream = videoStream;
+                        video.srcObject = stream;
+                        video.setAttribute("playsinline", true); // required to tell iOS safari we don't want fullscreen
+                        video.play();
+                        requestAnimationFrame(tick);
+                    })
+                    .catch(err => {
+                        console.error("Error accessing camera: ", err);
+                        alert("Could not access camera. Please ensure you have a camera and have granted permission.");
+                        video.style.display = 'none';
+                    });
+
+                function tick() {
+                    if (video.readyState === video.HAVE_ENOUGH_DATA) {
+                        canvasElement.height = video.videoHeight;
+                        canvasElement.width = video.videoWidth;
+                        canvas.drawImage(video, 0, 0, canvasElement.width, canvasElement.height);
+                        const imageData = canvas.getImageData(0, 0, canvasElement.width, canvasElement.height);
+                        const code = jsQR(imageData.data, imageData.width, imageData.height, {
+                            inversionAttempts: "dontInvert",
+                        });
+
+                        if (code) {
+                            stream.getTracks().forEach(track => track.stop());
+                            video.style.display = 'none';
+                            $('answer-sdp').value = code.data;
+                            // Automatically trigger connect
+                            $('connect-btn').click();
+                            return;
+                        }
+                    }
+                    requestAnimationFrame(tick);
+                }
+            });
+
+
+            // --- Generic UI and File Handling (Adapted from ui.js, network.js) ---
+            window.Events = {
+                fire: (type, detail) => window.dispatchEvent(new CustomEvent(type, { detail })),
+                on: (type, callback) => window.addEventListener(type, callback, false),
+            };
+
+            const isURL = text => /^((https?:\/\/|www)[^\s]+)/g.test(text.toLowerCase());
+
+            new class PeersUI {
+                constructor() {
+                    Events.on('peer-joined', e => this._onPeerJoined(e.detail));
+                    Events.on('peer-left', e => this._onPeerLeft(e.detail));
+                    Events.on('file-progress', e => this._onFileProgress(e.detail));
+                }
+                _onPeerJoined(peer) {
+                    if ($(peer.id)) return;
+                    const peerUI = new PeerUI(peer);
+                    document.querySelector('x-peers').appendChild(peerUI.$el);
+                }
+                _onPeerLeft(peerId) {
+                    const $peer = $(peerId);
+                    if ($peer) $peer.remove();
+                }
+                _onFileProgress(progress) {
+                    const $peer = $(progress.sender);
+                    if ($peer) $peer.ui.setProgress(progress.progress);
+                }
+            }
+
+            class PeerUI {
+                html() { return `<label class="column center" title="Click to send files or right click to send a text"><input type="file" multiple><x-icon shadow="1"><svg class="icon"><use xlink:href="#desktop-mac"/></svg></x-icon><div class="progress"><div class="circle"></div><div class="circle right"></div></div><div class="name font-subheading"></div><div class="device-name font-body2"></div><div class="status font-body2"></div></label>` }
+                constructor(peer) {
+                    this._peer = peer;
+                    const el = document.createElement('x-peer');
+                    el.id = peer.id;
+                    el.innerHTML = this.html();
+                    el.ui = this;
+                    el.querySelector('.name').textContent = peer.name.displayName;
+                    el.querySelector('.device-name').textContent = peer.name.deviceName;
+                    this.$el = el;
+                    this.$progress = el.querySelector('.progress');
+                    el.querySelector('input').addEventListener('change', e => this._onFilesSelected(e));
+                    el.addEventListener('contextmenu', e => { e.preventDefault(); Events.fire('text-recipient', this._peer.id); });
+                }
+                _onFilesSelected(e) {
+                    sendFiles(e.target.files);
+                    e.target.value = null;
+                }
+                setProgress(progress) {
+                    if (progress > 0) this.$el.setAttribute('transfer', '1');
+                    this.$progress.classList.toggle('over50', progress > 0.5);
+                    this.$progress.style.setProperty('--progress', `rotate(${360 * progress}deg)`);
+                    if (progress >= 1) {
+                        setTimeout(() => {
+                           this.setProgress(0);
+                           this.$el.removeAttribute('transfer');
+                        }, 500);
+                    }
+                }
+            }
+
+            class Dialog {
+                constructor(id) {
+                    this.$el = $(id);
+                    this.$el.querySelectorAll('[close]').forEach(el => el.addEventListener('click', () => this.hide()));
+                }
+                show() { this.$el.setAttribute('show', 1); }
+                hide() { this.$el.removeAttribute('show'); }
+            }
+
+            new class ReceiveDialog extends Dialog {
+                constructor() {
+                    super('receiveDialog');
+                    Events.on('file-received', e => this._displayFile(e.detail));
+                    this.$downloadLink = this.$el.querySelector('#download');
+                }
+                _displayFile(file) {
+                    const url = URL.createObjectURL(file.blob);
+                    this.$downloadLink.href = url;
+                    this.$downloadLink.download = file.name;
+                    this.$el.querySelector('#fileName').textContent = file.name;
+                    this.$el.querySelector('#fileSize').textContent = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
+                    if (file.mime.startsWith('image/')) {
+                        this.$el.querySelector('#img-preview').src = url;
+                        this.$el.setAttribute('has-preview', true);
+                    } else {
+                        this.$el.removeAttribute('has-preview');
+                    }
+                    this.show();
+                    $('blop').play();
+                }
+            }
+            
+            new class SendTextDialog extends Dialog {
+                constructor() {
+                    super('sendTextDialog');
+                    Events.on('text-recipient', () => this.show());
+                    this.$el.querySelector('form').addEventListener('submit', e => {
+                        e.preventDefault();
+                        const text = $('textInput').innerText;
+                        if (text) sendText(text);
+                        $('textInput').innerText = '';
+                        this.hide();
+                    });
+                }
+            }
+
+            new class ReceiveTextDialog extends Dialog {
+                constructor() {
+                    super('receiveTextDialog');
+                    Events.on('text-received', e => this._onText(e.detail));
+                    this.$text = this.$el.querySelector('#text');
+                    $('copy').addEventListener('click', () => navigator.clipboard.writeText(this.$text.textContent).then(() => Events.fire('notify-user', 'Copied to clipboard')));
+                }
+                _onText(message) {
+                    this.$text.innerHTML = '';
+                    if (isURL(message.text)) {
+                        const a = document.createElement('a');
+                        a.href = message.text; a.target = '_blank'; a.textContent = message.text;
+                        this.$text.appendChild(a);
+                    } else {
+                        this.$text.textContent = message.text;
+                    }
+                    this.show();
+                    $('blop').play();
+                }
+            }
+            
+            new class Toast extends Dialog {
+                constructor() {
+                    super('toast');
+                    Events.on('notify-user', e => this._onNotify(e.detail));
+                }
+                _onNotify(message) {
+                    this.$el.textContent = message;
+                    this.show();
+                    setTimeout(() => this.hide(), 3000);
+                }
+            }
+
+
+            // --- Data Sending/Receiving ---
+            function sendFiles(files) {
+                for (const file of files) {
+                    sendFile(file);
+                }
+            }
+
+            function sendFile(file) {
+                Events.fire('file-progress', { sender: 'peer-1', progress: 0 });
+                dataChannel.send(JSON.stringify({ type: 'header', name: file.name, mime: file.type, size: file.size }));
+                let offset = 0;
+                const reader = new FileReader();
+                reader.onload = e => {
+                    dataChannel.send(e.target.result);
+                    offset += e.target.result.byteLength;
+                    Events.fire('file-progress', { sender: 'peer-1', progress: offset / file.size });
+                    if (offset < file.size) {
+                        readSlice(offset);
+                    }
+                };
+                const readSlice = o => reader.readAsArrayBuffer(file.slice(o, o + CHUNK_SIZE));
+                readSlice(0);
+            }
+            
+            function sendText(text) {
+                const unescaped = btoa(unescape(encodeURIComponent(text)));
+                dataChannel.send(JSON.stringify({ type: 'text', text: unescaped }));
+            }
+            
+            function handleDataChannelMessage(event) {
+                if (typeof event.data === 'string') {
+                    const message = JSON.parse(event.data);
+                    if (message.type === 'name') {
+                        const peerUI = $('peer-1').ui;
+                        if (peerUI) {
+                            peerUI.$el.querySelector('.name').textContent = message.name;
+                        }
+                    } else if (message.type === 'header') {
+                        receivingFile = { name: message.name, mime: message.mime, size: message.size, chunks: [], receivedSize: 0 };
+                        Events.fire('file-progress', { sender: 'peer-1', progress: 0 });
+                    } else if (message.type === 'text') {
+                        const escaped = decodeURIComponent(escape(atob(message.text)));
+                        Events.fire('text-received', { text: escaped });
+                    }
+                } else {
+                    receivingFile.chunks.push(event.data);
+                    receivingFile.receivedSize += event.data.byteLength;
+                    const progress = receivingFile.receivedSize / receivingFile.size;
+                    Events.fire('file-progress', { sender: 'peer-1', progress });
+                    if (receivingFile.receivedSize === receivingFile.size) {
+                        const fileBlob = new Blob(receivingFile.chunks, { type: receivingFile.mime });
+                        Events.fire('file-received', { name: receivingFile.name, mime: receivingFile.mime, size: receivingFile.size, blob: fileBlob });
+                        receivingFile = {};
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
