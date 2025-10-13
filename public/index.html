@@ -239,16 +239,20 @@
             
             function createPeerConnection() {
                 peerConnection = new RTCPeerConnection(stunServers);
+                // In public/index.html, inside the createPeerConnection function
                 peerConnection.onicecandidate = event => {
-                    if (event.candidate) {
-                        setTimeout(() => { // Debounce to gather candidates
-                            const sdp = JSON.stringify(peerConnection.localDescription);
-                            if (peerConnection.localDescription.type === 'offer') {
-                                $('offer-sdp').value = sdp;
-                            } else {
-                                $('answer-sdp').value = sdp;
-                            }
-                        }, 1000);
+                    // We only care about when the gathering is complete.
+                    if (peerConnection.iceGatheringState === 'complete') {
+                        const sdp = JSON.stringify(peerConnection.localDescription);
+                        if (peerConnection.localDescription.type === 'offer') {
+                            $('offer-sdp').value = sdp;
+                            // You can add a notification for the user here
+                            console.log('Offer SDP is ready to be copied.');
+                        } else {
+                            $('answer-sdp').value = sdp;
+                            // You can add a notification for the user here
+                            console.log('Answer SDP is ready to be copied.');
+                        }
                     }
                 };
 
